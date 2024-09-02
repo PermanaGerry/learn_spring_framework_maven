@@ -17,7 +17,7 @@ public class BeanTest {
     }
 
     @Test
-    void testGetBeen() {
+    void testGetBean() {
         ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);
 
         Foo foo1 = context.getBean(Foo.class);
@@ -25,6 +25,6 @@ public class BeanTest {
         Foo foo3 = context.getBean(Foo.class);
 
         Assertions.assertSame(foo1, foo2);
-        Assertions.assertSame(foo1, foo3);
+        Assertions.assertSame(foo2, foo3);
     }
 }
