@@ -2,31 +2,32 @@ package belajarspringdasar.maven;
 
 import belajarspringdasar.maven.data.Baz;
 import belajarspringdasar.maven.data.Foo;
-import belajarspringdasar.maven.data.FooBaz;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /**
- * Dependency Injection
- * teknik dimana kita bisa mengotomisasi proses pembuatan object yang tergantung dengan object lain,
- * atau kita sebut dependency
+ * Bean Depends on
+ * adalah bean utama dibuat setelah itu bean yang tergantung akan dibuat
  */
 @Configuration
-public class BeenDependencyInjectionConfiguration {
+@Slf4j
+public class BeanDependsOnConfiguration {
 
     @Bean
+    @DependsOn({
+            "baz"
+    })
     public Foo foo() {
+        log.info("Create new Foo");
         return new Foo();
     }
 
     @Bean
-    public Baz baz() {
+    public  Baz baz() {
+        log.info("Create new baz");
         return new Baz();
-    }
-
-    @Bean
-    public FooBaz fooBaz(Foo foo, Baz baz) {
-        return new FooBaz(foo, baz);
     }
 
 }

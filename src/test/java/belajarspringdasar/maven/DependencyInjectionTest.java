@@ -16,7 +16,7 @@ public class DependencyInjectionTest {
 
     @BeforeEach
     void setUp() {
-        applicationContext = new AnnotationConfigApplicationContext(BeenDependencyInjectionConfiguration.class);
+        applicationContext = new AnnotationConfigApplicationContext(BeanDependencyInjectionConfiguration.class);
         applicationNameBeenContext = new AnnotationConfigApplicationContext(NameBeenDependencyInjectionConfiguration.class);
     }
 
