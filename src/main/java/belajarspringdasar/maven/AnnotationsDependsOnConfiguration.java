@@ -13,7 +13,7 @@ import org.springframework.context.annotation.DependsOn;
  */
 @Configuration
 @Slf4j
-public class BeanDependsOnConfiguration {
+public class AnnotationsDependsOnConfiguration {
 
     @Bean
     @DependsOn({
