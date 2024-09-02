@@ -3,6 +3,8 @@ package belajarspringdasar.maven;
 import belajarspringdasar.maven.data.Baz;
 import belajarspringdasar.maven.data.Foo;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -19,9 +21,12 @@ import org.springframework.context.annotation.Scope;
  * 5. Global Session (@Scope("globalSession"))
  * 6. Application (@Scope("application"))
  */
+
 @Slf4j
 @Configuration
 public class AnnotationsScopeConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(AnnotationsScopeConfiguration.class);
 
     @Bean
     @Scope("prototype")
