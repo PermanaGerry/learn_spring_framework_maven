@@ -2,9 +2,11 @@ package belajarspringdasar.maven;
 
 import belajarspringdasar.maven.data.Baz;
 import belajarspringdasar.maven.data.Foo;
+import belajarspringdasar.maven.scope.DoubletonScope;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -38,6 +40,19 @@ public class AnnotationsScopeConfiguration {
     @Bean
     @Scope("singleton")
     public Baz baz() {
+        return new Baz();
+    }
+
+    @Bean
+    public CustomScopeConfigurer customScopeConfigurer() {
+        CustomScopeConfigurer configurer = new CustomScopeConfigurer();
+        configurer.addScope("Doubleton", new DoubletonScope());
+        return  configurer;
+    }
+
+    @Bean(value = "bazDoubleton")
+    @Scope("Doubleton")
+    public Baz bazDoubleton() {
         return new Baz();
     }
 

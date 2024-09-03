@@ -35,4 +35,18 @@ public class AnnotationsScopeTest {
         Assertions.assertSame(baz, baz1);
     }
 
+    @Test
+    void testDoubletonScope() {
+        Baz baz1 = applicationContext.getBean("bazDoubleton", Baz.class);
+        Baz baz2 = applicationContext.getBean("bazDoubleton", Baz.class);
+        Baz baz3 = applicationContext.getBean("bazDoubleton", Baz.class);
+        Baz baz4 = applicationContext.getBean("bazDoubleton", Baz.class);
+
+        Assertions.assertSame(baz1, baz3);
+        Assertions.assertSame(baz2, baz4);
+
+        Assertions.assertNotSame(baz1, baz2);
+        Assertions.assertNotSame(baz3, baz4);
+    }
+
 }
