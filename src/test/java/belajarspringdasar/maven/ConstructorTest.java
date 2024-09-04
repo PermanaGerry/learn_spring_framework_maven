@@ -19,7 +19,7 @@ public class ConstructorTest {
     }
 
     @Test
-    void testConstructor() {
+    void testConstructorDependencyInjection() {
         ConstructorService constructorService = applicationContext.getBean(ConstructorService.class);
         ConstructorRepository constructorRepository = applicationContext.getBean(ConstructorRepository.class);
 

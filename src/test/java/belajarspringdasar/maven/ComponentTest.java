@@ -18,7 +18,7 @@ public class ComponentTest {
     }
 
     @Test
-    void testComponent() {
+    void testComponentDependencyInjection() {
         ComponentService componentService = applicationContext.getBean(ComponentService.class);
         ComponentService componentService1 = applicationContext.getBean("componentService", ComponentService.class);
 
