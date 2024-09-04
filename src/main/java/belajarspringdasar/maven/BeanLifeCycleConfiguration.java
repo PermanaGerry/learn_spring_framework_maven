@@ -1,14 +1,14 @@
 package belajarspringdasar.maven;
 
-import belajarspringdasar.maven.data.LyfeCicle;
+import belajarspringdasar.maven.data.Connection;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BeanLyfeCycleConfiguration {
+public class BeanLifeCycleConfiguration {
 
     @Bean
-    public LyfeCicle lyfeCycle() {
-        return new LyfeCicle();
+    public Connection connection() {
+        return new Connection();
     }
 }

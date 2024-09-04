@@ -7,18 +7,18 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 @Slf4j
-public class LyfeCicle implements InitializingBean, DisposableBean {
+public class Connection implements InitializingBean, DisposableBean {
 
-    private static final Logger log = LoggerFactory.getLogger(LyfeCicle.class);
+    private static final Logger log = LoggerFactory.getLogger(Connection.class);
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("Properties bean success");
+        log.info("Connection open");
     }
 
     @Override
     public void destroy() throws Exception {
-        log.info("Properties bean destroy");
+        log.info("Connection close");
     }
 
 }
