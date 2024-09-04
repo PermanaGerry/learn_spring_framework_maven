@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = {
-        "belajarspringdasar.maven.service",
-        "belajarspringdasar.maven.component.repository"
+        "belajarspringdasar.maven.component.repository",
+        "belajarspringdasar.maven.service"
 })
-public class ComponentConfiguration {
+public class ConstructorConfiguration {
 }

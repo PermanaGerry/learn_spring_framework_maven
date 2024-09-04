@@ -1,8 +1,6 @@
 package belajarspringdasar.maven;
 
-import belajarspringdasar.maven.component.configuration.Baz;
-import belajarspringdasar.maven.component.configuration.Foo;
-import belajarspringdasar.maven.component.configuration.FooBaz;
+import belajarspringdasar.maven.service.ComponentService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,14 +19,11 @@ public class ComponentTest {
 
     @Test
     void testComponent() {
-        Foo foo = applicationContext.getBean(Foo.class);
-        Foo foo1 = applicationContext.getBean("foo", Foo.class);
-        Baz baz = applicationContext.getBean("baz", Baz.class);
-        FooBaz fooBaz = applicationContext.getBean("fooBaz", FooBaz.class);
+        ComponentService componentService = applicationContext.getBean(ComponentService.class);
+        ComponentService componentService1 = applicationContext.getBean("componentService", ComponentService.class);
 
-        Assertions.assertSame(foo, foo1);
-        Assertions.assertNotSame(foo, baz);
-        Assertions.assertNotSame(foo, fooBaz);
+        Assertions.assertNotNull(componentService);
+        Assertions.assertSame(componentService, componentService1);
     }
 
 }
