@@ -1,8 +1,11 @@
 package belajarspringdasar.maven;
 
+import belajarspringdasar.maven.component.repository.QualifierRepository;
 import belajarspringdasar.maven.component.repository.SetterFieldBasedRepository;
 import belajarspringdasar.maven.component.repository.SetterRepository;
+import belajarspringdasar.maven.data.MultiFoo;
 import belajarspringdasar.maven.service.ComponentService;
+import belajarspringdasar.maven.service.QualifierService;
 import belajarspringdasar.maven.service.SetterFieldBasedService;
 import belajarspringdasar.maven.service.SetterService;
 import org.junit.jupiter.api.Assertions;
@@ -44,6 +47,25 @@ public class ComponentTest {
         SetterFieldBasedRepository fieldBasedRepository = applicationContext.getBean(SetterFieldBasedRepository.class);
 
         Assertions.assertSame(fieldBasedRepository, setterFieldBasedService.getSetterFieldBasedRepository());
+    }
+
+    @Test
+    void testQualifierDependencyInjection() {
+        QualifierService qualifierService = applicationContext.getBean(QualifierService.class);
+
+        QualifierRepository firstQualifierRepository = applicationContext.getBean("firstQualifierRepository", QualifierRepository.class);
+        QualifierRepository secondQualifierRepository = applicationContext.getBean("secondQualifierRepository", QualifierRepository.class);
+
+        Assertions.assertSame(firstQualifierRepository, qualifierService.getFirstQualifierRepository());
+        Assertions.assertSame(secondQualifierRepository, qualifierService.getSecondQualifierRepository());
+    }
+
+    @Test
+    void testObjectProvider() {
+
+        MultiFoo multiFoo = applicationContext.getBean(MultiFoo.class);
+        Assertions.assertEquals(3, multiFoo.getFoos().size());
+
     }
 
 }

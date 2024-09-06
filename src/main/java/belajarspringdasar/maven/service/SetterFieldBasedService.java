@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class SetterFieldBasedService {
 
+    /**
+     * Deprecated annotation autowired in private property
+     */
     @Getter
     @Autowired
     private SetterFieldBasedRepository setterFieldBasedRepository;
