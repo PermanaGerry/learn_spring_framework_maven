@@ -1,7 +1,7 @@
 package belajarspringdasar.maven;
 
-import belajarspringdasar.maven.data.Car;
-import belajarspringdasar.maven.processor.IdGeneratorBeanPostProcessor;
+import belajarspringdasar.maven.data.Foo;
+import belajarspringdasar.maven.processor.BeanFactoryPostProcessor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,12 +10,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-public class BeanPostProcessorTest {
+public class BeanFactoryPostProcessorTest {
 
     @Configuration
     @Import({
-            Car.class,
-            IdGeneratorBeanPostProcessor.class
+            BeanFactoryPostProcessor.class
     })
     public static class TestConfiguration {
 
@@ -30,11 +29,9 @@ public class BeanPostProcessorTest {
     }
 
     @Test
-    void testCar() {
-        Car car = applicationContext.getBean(Car.class);
-
-        System.out.println(car.getId());
-        Assertions.assertNotNull(car.getId());
+    void testBeanFactoryPostProcessor() {
+        Foo foo = applicationContext.getBean(Foo.class);
+        Assertions.assertNotNull(foo);
     }
 
 }

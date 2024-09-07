@@ -1,7 +1,6 @@
 package belajarspringdasar.maven;
 
-import belajarspringdasar.maven.data.Car;
-import belajarspringdasar.maven.processor.IdGeneratorBeanPostProcessor;
+import belajarspringdasar.maven.service.AuthService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,12 +9,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-public class BeanPostProcessorTest {
+public class AwareTest {
 
     @Configuration
     @Import({
-            Car.class,
-            IdGeneratorBeanPostProcessor.class
+            AuthService.class
     })
     public static class TestConfiguration {
 
@@ -30,11 +28,10 @@ public class BeanPostProcessorTest {
     }
 
     @Test
-    void testCar() {
-        Car car = applicationContext.getBean(Car.class);
+    void testAware() {
+        AuthService authService = applicationContext.getBean(AuthService.class);
 
-        System.out.println(car.getId());
-        Assertions.assertNotNull(car.getId());
+        Assertions.assertEquals(AuthService.class.getName(), authService.getBeanName());
+        Assertions.assertSame(applicationContext, authService.getApplicationContext());
     }
-
 }
